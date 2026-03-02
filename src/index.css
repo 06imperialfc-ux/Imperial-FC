@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 43 95% 53%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 220 14% 5%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 43 95% 53%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 43 95% 53%;
+    --input: 0 0% 15%;
+    --ring: 43 95% 53%;
+    --radius: 0rem;
+    
+    /* Imperial FC colors */
+    --imperial-black: #000000;
+    --imperial-void: #0B0C10;
+    --imperial-yellow: #fbb616;
+    --imperial-yellow-glow: #ffd700;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto !important;
+  }
+  
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+}
+
+/* Aggressive Sports Typography */
+.font-display {
+  font-family: 'Oswald', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.font-aggressive {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.font-mono-custom {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
+}
+
+/* Hard Bevel / Angular Button Styles */
+.btn-imperial {
+  @apply relative px-8 py-4 bg-imperial-yellow text-black font-aggressive text-sm tracking-wider;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: all 0.2s ease;
+}
+
+.btn-imperial:hover {
+  @apply bg-white;
+  box-shadow: 0 0 30px rgba(251, 182, 22, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-imperial-outline {
+  @apply relative px-8 py-4 bg-transparent text-imperial-yellow font-aggressive text-sm tracking-wider border-2 border-imperial-yellow;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: all 0.2s ease;
+}
+
+.btn-imperial-outline:hover {
+  @apply bg-imperial-yellow text-black;
+  box-shadow: 0 0 30px rgba(251, 182, 22, 0.5);
+}
+
+/* Hard Bevel Card Style */
+.card-imperial {
+  @apply relative bg-imperial-void border-2 border-imperial-yellow/30;
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+}
+
+.card-imperial:hover {
+  @apply border-imperial-yellow;
+  box-shadow: 0 0 30px rgba(251, 182, 22, 0.2);
+}
+
+/* Beveled Edge Utility */
+.bevel-sm {
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+
+.bevel-md {
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+
+.bevel-lg {
+  clip-path: polygon(25px 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%, 0 25px);
+}
+
+/* Sharp Corner Container */
+.sharp-box {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Hero Zoom Animation */
+@keyframes hero-zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 20s ease-in-out infinite;
+}
+
+/* Pulse Glow for CTA */
+@keyframes pulse-glow-imperial {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(251, 182, 22, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(251, 182, 22, 0.8), 0 0 60px rgba(251, 182, 22, 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow-imperial 2s ease-in-out infinite;
+}
+
+/* Card Lift Animation */
+@keyframes card-lift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Fade In Up Animation */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Stagger Animation Delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Gradient text - Imperial */
+.gradient-text-imperial {
+  background: linear-gradient(135deg, #fbb616 0%, #ffd700 50%, #fbb616 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects - Imperial Yellow */
+.glow-imperial {
+  box-shadow: 0 0 20px rgba(251, 182, 22, 0.4),
+              0 0 40px rgba(251, 182, 22, 0.2),
+              0 0 60px rgba(251, 182, 22, 0.1);
+}
+
+.text-glow-imperial {
+  text-shadow: 0 0 10px rgba(251, 182, 22, 0.5),
+               0 0 20px rgba(251, 182, 22, 0.3),
+               0 0 30px rgba(251, 182, 22, 0.2);
+}
+
+/* Navigation pill - Angular */
+.nav-pill-imperial {
+  @apply bg-black/80 border-2 border-imperial-yellow/30;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.nav-pill-imperial:hover {
+  @apply border-imperial-yellow;
+  box-shadow: 0 0 20px rgba(251, 182, 22, 0.3);
+}
+
+/* Scrollbar styling - Imperial */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(251, 182, 22, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(251, 182, 22, 0.6);
+}
+
+/* Section transitions */
+.section-transition {
+  transition: background-color 0.6s ease-out;
+}
+
+/* Image hover effect - Sharp */
+.image-hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.image-hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* Canvas container */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Three.js canvas fix */
+canvas {
+  display: block;
+}
+
+/* List item hover state - Imperial */
+.fixture-item {
+  @apply border-b border-imperial-yellow/20;
+  transition: all 0.3s ease;
+}
+
+.fixture-item:hover {
+  @apply bg-imperial-yellow/5;
+}
+
+/* Player card hover */
+.player-card {
+  transition: all 0.3s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 40px rgba(251, 182, 22, 0.2);
+}
+
+/* Masonry Gallery */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 10px;
+  gap: 16px;
+}
+
+.masonry-item {
+  break-inside: avoid;
+}
+
+/* Video overlay - Imperial */
+.video-overlay-imperial {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+/* Sharp divider */
+.sharp-divider {
+  @apply h-px bg-gradient-to-r from-transparent via-imperial-yellow to-transparent;
+}
+
+/* Result score styling */
+.score-box {
+  @apply px-4 py-2 bg-imperial-yellow text-black font-aggressive text-xl;
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+}
+
+/* Status badges */
+.status-win {
+  @apply px-3 py-1 bg-green-500/20 text-green-400 text-xs font-mono-custom border border-green-500/40;
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+}
+
+.status-loss {
+  @apply px-3 py-1 bg-red-500/20 text-red-400 text-xs font-mono-custom border border-red-500/40;
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+}
+
+.status-upcoming {
+  @apply px-3 py-1 bg-imperial-yellow/20 text-imperial-yellow text-xs font-mono-custom border border-imperial-yellow/40;
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+}
