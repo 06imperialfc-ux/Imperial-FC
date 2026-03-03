@@ -114,7 +114,7 @@ const ParallaxGallery = () => {
           ref={topRowRef}
           className="flex gap-4 mb-4 will-change-transform"
         >
-          {parallaxGalleryConfig.parallaxImagesTop.map((image) => (
+          {parallaxGalleryConfig.parallaxImagesTop.map((image: any) => (
             <div
               key={image.id}
               className="relative flex-shrink-0 w-[400px] h-[250px] overflow-hidden rounded-lg image-hover-scale"
@@ -135,7 +135,7 @@ const ParallaxGallery = () => {
           className="flex gap-4 will-change-transform"
           style={{ transform: 'translateX(-150px)' }}
         >
-          {parallaxGalleryConfig.parallaxImagesBottom.map((image) => (
+          {parallaxGalleryConfig.parallaxImagesBottom.map((image: any) => (
             <div
               key={image.id}
               className="relative flex-shrink-0 w-[400px] h-[250px] overflow-hidden rounded-lg image-hover-scale"
@@ -159,7 +159,7 @@ const ParallaxGallery = () => {
               key={i}
               className="flex items-center gap-8 mx-8 text-2xl font-display text-white/20"
             >
-              {parallaxGalleryConfig.marqueeTexts.map((text, j) => (
+              {parallaxGalleryConfig.marqueeTexts.map((text: string, j: number) => (
                 <span key={j}>{text}</span>
               ))}
               <Ticket className="w-6 h-6" />
@@ -189,7 +189,7 @@ const ParallaxGallery = () => {
           ref={galleryTrackRef}
           className="flex items-center gap-8 h-full px-12 pt-24 will-change-transform"
         >
-          {parallaxGalleryConfig.galleryImages.map((image, index) => (
+          {parallaxGalleryConfig.galleryImages.map((image: any, index: number) => (
             <div
               key={image.id}
               className="relative flex-shrink-0 group cursor-pointer"
