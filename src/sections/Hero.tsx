@@ -122,7 +122,7 @@ const Hero = () => {
       >
         <div className="flex items-center gap-1">
           {heroConfig.navItems.map((item) => {
-            const IconComponent = ICON_MAP[item.icon];
+            const IconComponent = ICON_MAP[item.icon as keyof typeof ICON_MAP];
             return (
               <button
                 key={item.sectionId}
