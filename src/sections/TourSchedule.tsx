@@ -125,7 +125,7 @@ const TourSchedule = () => {
 
           {/* Right: Tour list */}
           <div className="space-y-4">
-            {TOUR_DATES.map((tour, index) => {
+            {TOUR_DATES.map((tour: any, index: number) => {
               const status = getStatusLabel(tour.status);
 
               return (
