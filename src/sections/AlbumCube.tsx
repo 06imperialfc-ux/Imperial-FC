@@ -44,7 +44,7 @@ const Cube = ({ rotationProgress }: CubeProps) => {
   return (
     <mesh ref={meshRef} castShadow>
       <boxGeometry args={[cubeSize, cubeSize, cubeSize]} />
-      {textures.map((texture, index) => (
+      {textures.map((texture: any, index: number) => (
         <meshStandardMaterial
           key={index}
           attach={`material-${index}`}
@@ -175,7 +175,7 @@ const AlbumCube = () => {
       {/* Progress indicator */}
       <div className="absolute right-12 top-1/2 -translate-y-1/2 z-20">
         <div className="flex flex-col gap-3">
-          {albumCubeConfig.albums.map((album, index) => (
+          {albumCubeConfig.albums.map((album: any, index: number) => (
             <div
               key={album.id}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
