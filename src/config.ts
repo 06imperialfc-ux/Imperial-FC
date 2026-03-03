@@ -1,365 +1,85 @@
-// =============================================================================
-// Imperial FC Site Configuration
-// Edit ONLY this file to customize all content across the site.
-// All animations, layouts, and styles are controlled by the components.
-// =============================================================================
+// app/src/config.ts
 
-// -- Site-wide settings -------------------------------------------------------
-export interface SiteConfig {
-  title: string;
-  description: string;
-  language: string;
-}
-
-export const siteConfig: SiteConfig = {
-  title: "Imperial FC - The Empire Strikes Back",
-  description: "Official website of Imperial FC - A dominant force in football. View fixtures, squad, match reports, and media.",
-  language: "en",
+export const siteConfig = {
+  title: 'Imperial FC | Official Site',
+  brandName: 'IMPERIAL FC',
 };
 
-// -- Hero Section -------------------------------------------------------------
-export interface HeroNavItem {
-  label: string;
-  sectionId: string;
-  icon: "disc" | "play" | "calendar" | "music";
-}
-
-export interface HeroConfig {
-  backgroundImage: string;
-  brandName: string;
-  decodeText: string;
-  decodeChars: string;
-  subtitle: string;
-  ctaPrimary: string;
-  ctaPrimaryTarget: string;
-  ctaSecondary: string;
-  ctaSecondaryTarget: string;
-  cornerLabel: string;
-  cornerDetail: string;
-  navItems: HeroNavItem[];
-}
-
-export const heroConfig: HeroConfig = {
-  backgroundImage: "https://placehold.co/1200x600/000000/fbb616?text=Imperial+FC+Hero+Video+Loop",
-  brandName: "IMPERIAL FC",
-  decodeText: "THE EMPIRE STRIKES BACK",
-  decodeChars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-  subtitle: "Welcome to Imperial FC",
-  ctaPrimary: "View Latest Fixtures",
-  ctaPrimaryTarget: "fixtures",
-  ctaSecondary: "Meet The Squad",
-  ctaSecondaryTarget: "squad",
-  cornerLabel: "EST. 2024",
-  cornerDetail: "DOMINANT FORCE",
+export const heroConfig = {
+  brandName: 'IMPERIAL FC',
+  decodeText: 'THE VANGUARD',
+  decodeChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  subtitle: 'PREMIUM FOOTBALL COLLECTIVE',
+  backgroundImage: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000',
+  ctaPrimary: 'LATEST MATCH',
+  ctaPrimaryTarget: 'match-report',
+  ctaSecondary: 'VIEW SQUAD',
+  ctaSecondaryTarget: 'squad',
   navItems: [
-    { label: "Match Report", sectionId: "match-report", icon: "play" },
-    { label: "Squad", sectionId: "squad", icon: "disc" },
-    { label: "Fixtures", sectionId: "fixtures", icon: "calendar" },
-    { label: "Media", sectionId: "media", icon: "music" },
+    { label: 'MATCH', icon: 'play', sectionId: 'match-report' },
+    { label: 'SQUAD', icon: 'disc', sectionId: 'squad' },
+    { label: 'FIXTURES', icon: 'calendar', sectionId: 'fixtures' },
   ],
+  cornerLabel: 'EST. 2024',
+  cornerDetail: 'CITY DIVISION',
 };
 
-// -- Match Report Section (Bento Box) -----------------------------------------
-export interface MatchReportConfig {
-  sectionLabel: string;
-  sectionTitle: string;
-  matchImage: string;
-  matchTitle: string;
-  matchDescription: string;
-  score: string;
-  opponent: string;
-  matchDate: string;
-  stats: {
-    possession: string;
-    shots: string;
-    passes: string;
-  };
-}
-
-export const matchReportConfig: MatchReportConfig = {
-  sectionLabel: "LATEST RESULT",
-  sectionTitle: "MATCH REPORT",
-  matchImage: "https://placehold.co/600x400/000000/fbb616?text=Match+Action+Shot",
-  matchTitle: "IMPERIAL FC vs SKAPIE STARS",
-  matchDescription: "A hard-fought victory this past Sunday. The squad dug deep to secure the 3 points, sending Skapie Stars packing with a dominant, relentless performance.",
-  score: "3 - 1",
-  opponent: "Skapie Stars",
-  matchDate: "Sunday, March 2, 2025",
-  stats: {
-    possession: "62%",
-    shots: "18",
-    passes: "487",
-  },
+export const matchReportConfig = {
+  matchTitle: 'DOMINANT PERFORMANCE',
+  opponent: 'City Rivals',
+  score: '3 - 1',
+  date: 'FEBRUARY 24, 2026',
+  image: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1200',
+  summary: 'A masterclass in clinical finishing saw the Vanguard take all three points in a heated derby.',
+  
+  // NEW FIELDS
+  standing: '3rd', // Update this to 1st, 3rd, 4th, etc.
+  spotlightPlayer: 'S. GUMEDE',
+  spotlightStat: '2 GOALS, 1 ASSIST',
+  allMatchesLink: '#', // Placeholder for future matches page
 };
 
-// -- Squad Section ------------------------------------------------------------
-export interface Player {
-  id: number;
-  name: string;
-  position: string;
-  number: string;
-  image: string;
-  stats: {
-    appearances: number;
-    goals: number;
-    assists: number;
-  };
-}
-
-export interface SquadConfig {
-  sectionLabel: string;
-  sectionTitle: string;
-  players: Player[];
-}
-
-export const squadConfig: SquadConfig = {
-  sectionLabel: "THE TEAM",
-  sectionTitle: "MEET THE IMPERIAL VANGUARD",
+export const squadConfig = {
+  title: 'THE VANGUARD',
+  viewFullSquadLink: '#', // Placeholder for the full squad page
   players: [
     {
       id: 1,
-      name: "MARCUS STEELE",
-      position: "Striker",
-      number: "09",
-      image: "https://placehold.co/300x400/000000/fbb616?text=Player+Headshot",
-      stats: { appearances: 24, goals: 18, assists: 7 },
+      name: 'M. KHUMALO',
+      position: 'FORWARD',
+      number: '09',
+      image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600',
+      stats: { goals: '12', assists: '4' }
     },
     {
       id: 2,
-      name: "DIEGO VARGAS",
-      position: "Midfielder",
-      number: "10",
-      image: "https://placehold.co/300x400/000000/fbb616?text=Player+Headshot",
-      stats: { appearances: 26, goals: 8, assists: 15 },
-    },
-    {
-      id: 3,
-      name: "KAI TANAKA",
-      position: "Defender",
-      number: "04",
-      image: "https://placehold.co/300x400/000000/fbb616?text=Player+Headshot",
-      stats: { appearances: 25, goals: 2, assists: 4 },
-    },
-    {
-      id: 4,
-      name: "LEO ANDERSON",
-      position: "Goalkeeper",
-      number: "01",
-      image: "https://placehold.co/300x400/000000/fbb616?text=Player+Headshot",
-      stats: { appearances: 26, goals: 0, assists: 1 },
-    },
-  ],
+      name: 'L. DLAMINI',
+      position: 'MIDFIELD',
+      number: '08',
+      image: 'https://images.unsplash.com/photo-1552318975-27dbad9b738d?q=80&w=600',
+      stats: { goals: '3', assists: '15' }
+    }
+  ]
 };
 
-// -- Fixtures & Results Section -----------------------------------------------
-export interface Fixture {
-  id: number;
-  date: string;
-  time: string;
-  opponent: string;
-  venue: string;
-  type: "home" | "away";
-  status: "win" | "loss" | "draw" | "upcoming";
-  score?: string;
-}
-
-export interface FixturesConfig {
-  sectionLabel: string;
-  sectionTitle: string;
-  resultsTitle: string;
-  fixturesTitle: string;
-  fixtures: Fixture[];
-}
-
-export const fixturesConfig: FixturesConfig = {
-  sectionLabel: "SCHEDULE",
-  sectionTitle: "FIXTURES & RESULTS",
-  resultsTitle: "PAST RESULTS",
-  fixturesTitle: "UPCOMING FIXTURES",
+export const fixturesConfig = {
   fixtures: [
-    {
-      id: 1,
-      date: "Mar 2, 2025",
-      time: "15:00",
-      opponent: "Skapie Stars",
-      venue: "Imperial Stadium",
-      type: "home",
-      status: "win",
-      score: "3 - 1",
-    },
-    {
-      id: 2,
-      date: "Feb 23, 2025",
-      time: "14:30",
-      opponent: "Thunder United",
-      venue: "Thunder Arena",
-      type: "away",
-      status: "win",
-      score: "2 - 0",
-    },
-    {
-      id: 3,
-      date: "Feb 16, 2025",
-      time: "16:00",
-      opponent: "Royal Knights",
-      venue: "Imperial Stadium",
-      type: "home",
-      status: "draw",
-      score: "1 - 1",
-    },
-    {
-      id: 4,
-      date: "Mar 9, 2025",
-      time: "15:00",
-      opponent: "City Warriors",
-      venue: "Warrior Park",
-      type: "away",
-      status: "upcoming",
-    },
-    {
-      id: 5,
-      date: "Mar 16, 2025",
-      time: "14:00",
-      opponent: "Northern FC",
-      venue: "Imperial Stadium",
-      type: "home",
-      status: "upcoming",
-    },
-  ],
+    { id: 1, opponent: 'United FC', date: 'MAR 05', time: '15:00', venue: 'Imperial Arena', status: 'upcoming' },
+    { id: 2, opponent: 'Strikers SC', date: 'FEB 28', time: '14:30', venue: 'West Park', status: 'win', score: '2-0' }
+  ]
 };
 
-// -- Media Gallery Section ----------------------------------------------------
-export interface GalleryImage {
-  id: number;
-  src: string;
-  alt: string;
-  title: string;
-}
-
-export interface MediaGalleryConfig {
-  sectionLabel: string;
-  sectionTitle: string;
-  images: GalleryImage[];
-}
-
-export const mediaGalleryConfig: MediaGalleryConfig = {
-  sectionLabel: "GALLERY",
-  sectionTitle: "MEDIA CENTER",
-  images: [
-    {
-      id: 1,
-      src: "https://placehold.co/400x400/000000/fbb616?text=Gallery+Image+1",
-      alt: "Match celebration",
-      title: "VICTORY CELEBRATION",
-    },
-    {
-      id: 2,
-      src: "https://placehold.co/400x600/000000/fbb616?text=Gallery+Image+2",
-      alt: "Team huddle",
-      title: "TEAM HUDDLE",
-    },
-    {
-      id: 3,
-      src: "https://placehold.co/600x400/000000/fbb616?text=Gallery+Image+3",
-      alt: "Goal moment",
-      title: "GOAL MOMENT",
-    },
-    {
-      id: 4,
-      src: "https://placehold.co/400x500/000000/fbb616?text=Gallery+Image+4",
-      alt: "Training session",
-      title: "TRAINING",
-    },
-    {
-      id: 5,
-      src: "https://placehold.co/500x400/000000/fbb616?text=Gallery+Image+5",
-      alt: "Fan celebration",
-      title: "FAN ZONE",
-    },
-    {
-      id: 6,
-      src: "https://placehold.co/400x400/000000/fbb616?text=Gallery+Image+6",
-      alt: "Captain armband",
-      title: "CAPTAIN",
-    },
-  ],
-};
-
-// -- Footer Section -----------------------------------------------------------
-export interface FooterConfig {
-  brandName: string;
-  brandDescription: string;
-  quickLinksTitle: string;
-  quickLinks: string[];
-  contactTitle: string;
-  emailLabel: string;
-  email: string;
-  phoneLabel: string;
-  phone: string;
-  addressLabel: string;
-  address: string;
-  socialTitle: string;
-  copyrightText: string;
-  bottomLinks: string[];
-}
-
-export const footerConfig: FooterConfig = {
-  brandName: "IMPERIAL FC",
-  brandDescription: "The Empire Strikes Back. A dominant force in football, built on passion, precision, and relentless pursuit of victory.",
-  quickLinksTitle: "QUICK LINKS",
-  quickLinks: ["Home", "Fixtures", "Squad", "Media", "Contact"],
-  contactTitle: "CONTACT",
-  emailLabel: "Email",
-  email: "info@imperialfc.com",
-  phoneLabel: "Phone",
-  phone: "+1 (555) 123-4567",
-  addressLabel: "Stadium",
-  address: "Imperial Stadium, 123 Champions Way",
-  socialTitle: "FOLLOW US",
-  copyrightText: "© 2025 Imperial FC. All rights reserved.",
-  bottomLinks: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
-};
-
-// Legacy configs (kept for compatibility, return empty arrays to disable sections)
-export const albumCubeConfig = {
-  albums: [] as Array<{ id: number; title: string; subtitle: string; image: string }>,
-  cubeTextures: [] as string[],
-  scrollHint: "",
-};
-
-export const parallaxGalleryConfig = {
-  sectionLabel: "",
-  sectionTitle: "",
-  galleryLabel: "",
-  galleryTitle: "",
-  marqueeTexts: [] as string[],
-  endCtaText: "",
-  parallaxImagesTop: [] as Array<{ id: number; src: string; alt: string }>,
-  parallaxImagesBottom: [] as Array<{ id: number; src: string; alt: string }>,
-  galleryImages: [] as Array<{ id: number; src: string; title: string; date: string }>,
-};
-
-export const tourScheduleConfig = {
-  sectionLabel: "",
-  sectionTitle: "",
-  vinylImage: "",
-  buyButtonText: "",
-  detailsButtonText: "",
-  bottomNote: "",
-  bottomCtaText: "",
-  statusLabels: {
-    onSale: "",
-    soldOut: "",
-    comingSoon: "",
-    default: "",
+export const footerConfig = {
+  brandName: 'IMPERIAL FC',
+  brandDescription: 'The elite football collective of the city. Precision, Power, and the Pursuit of Excellence.',
+  socials: {
+    facebook: 'https://facebook.com',
+    instagram: 'https://instagram.com',
+    whatsapp: 'https://whatsapp.com/channel/your-id'
   },
-  tourDates: [] as Array<{
-    id: number;
-    date: string;
-    time: string;
-    city: string;
-    venue: string;
-    status: "on-sale" | "sold-out" | "coming-soon";
-    image: string;
-  }>,
+  contact: {
+    email: 'contact@imperialfc.com',
+    phone: '+27 00 000 0000',
+    location: 'Johannesburg, South Africa'
+  }
 };
