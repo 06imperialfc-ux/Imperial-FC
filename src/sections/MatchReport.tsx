@@ -1,195 +1,85 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Target, Activity, Zap } from 'lucide-react';
+import { Trophy, Star, ChevronRight, History } from 'lucide-react';
 import { matchReportConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MatchReport = () => {
-  // Null check
-  if (!matchReportConfig.matchTitle) {
-    return null;
-  }
+  if (!matchReportConfig.matchTitle) return null;
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Card reveal animation
-      gsap.fromTo(
-        cardRef.current,
+      gsap.fromTo(cardRef.current,
         { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-
-      // Image reveal
-      gsap.fromTo(
-        imageRef.current,
-        { scale: 1.1, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-
-      // Content fade in
-      gsap.fromTo(
-        contentRef.current,
-        { x: -30, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power3.out',
-          delay: 0.2,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-
-      // Stats stagger
-      gsap.fromTo(
-        statsRef.current?.children || [],
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: 'power3.out',
-          delay: 0.4,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse',
-          },
-        }
+        { y: 0, opacity: 1, duration: 0.8, scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' } }
       );
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="match-report"
-      className="relative w-full min-h-screen bg-black py-20 px-4 md:px-8 lg:px-16"
-    >
-      {/* Section Header */}
-      <div className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-2 h-2 bg-imperial-yellow" />
-          <span className="font-mono-custom text-xs text-imperial-yellow uppercase tracking-[0.2em]">
-            {matchReportConfig.sectionLabel}
-          </span>
-        </div>
-        <h2 className="font-aggressive text-4xl md:text-5xl lg:text-6xl text-white">
-          {matchReportConfig.sectionTitle}
-        </h2>
-      </div>
-
-      {/* Bento Box Card */}
-      <div
-        ref={cardRef}
-        className="max-w-7xl mx-auto"
-      >
-        <div className="card-imperial grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden">
-          {/* Image Side */}
-          <div
-            ref={imageRef}
-            className="relative h-64 lg:h-auto min-h-[400px] overflow-hidden"
-          >
-            <img
-              src={matchReportConfig.matchImage}
-              alt="Match action"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Score overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-mono-custom text-xs text-white/60 uppercase mb-1">Final Score</p>
-                  <div className="flex items-center gap-4">
-                    <span className="font-aggressive text-4xl text-imperial-yellow">{matchReportConfig.score}</span>
-                  </div>
+    <section ref={sectionRef} id="match-report" className="w-full bg-black py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div ref={cardRef} className="bg-imperial-void border-2 border-imperial-yellow/10 overflow-hidden bevel-lg">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="relative h-80 lg:h-auto overflow-hidden">
+              <img src={matchReportConfig.image} alt="Match" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-r from-imperial-void via-transparent to-transparent" />
+            </div>
+            
+            <div className="p-8 lg:p-12 flex flex-col justify-center">
+              <div className="flex items-center gap-2 text-imperial-yellow mb-4">
+                <Trophy className="w-5 h-5" />
+                <span className="font-mono-custom tracking-[0.2em] text-sm">LATEST RESULT — {matchReportConfig.date}</span>
+              </div>
+              
+              <h2 className="font-aggressive text-4xl md:text-5xl text-white mb-6 leading-tight">{matchReportConfig.matchTitle}</h2>
+              
+              <div className="flex items-center gap-8 mb-8">
+                <div className="text-center">
+                  <p className="text-white/40 font-mono-custom text-xs uppercase mb-1">Imperial</p>
+                  <p className="text-5xl font-aggressive text-imperial-yellow">{matchReportConfig.score.split('-')[0]}</p>
                 </div>
-                <div className="text-right">
-                  <p className="font-mono-custom text-xs text-white/60 uppercase mb-1">vs</p>
-                  <span className="font-aggressive text-xl text-white">{matchReportConfig.opponent}</span>
+                <div className="text-white/20 text-3xl font-aggressive">VS</div>
+                <div className="text-center">
+                  <p className="text-white/40 font-mono-custom text-xs uppercase mb-1">{matchReportConfig.opponent}</p>
+                  <p className="text-5xl font-aggressive text-white">{matchReportConfig.score.split('-')[1]}</p>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Content Side */}
-          <div ref={contentRef} className="p-8 lg:p-12 flex flex-col justify-between">
-            <div>
-              {/* Match title */}
-              <h3 className="font-aggressive text-2xl md:text-3xl text-white mb-4">
-                {matchReportConfig.matchTitle}
-              </h3>
-
-              {/* Date */}
-              <p className="font-mono-custom text-sm text-imperial-yellow/70 mb-6">
-                {matchReportConfig.matchDate}
-              </p>
-
-              {/* Description */}
-              <p className="text-white/70 leading-relaxed mb-8">
-                {matchReportConfig.matchDescription}
-              </p>
-            </div>
-
-            {/* Stats Grid */}
-            <div ref={statsRef} className="grid grid-cols-3 gap-4">
-              <div className="bg-black/50 border border-imperial-yellow/20 p-4 bevel-sm">
-                <Activity className="w-5 h-5 text-imperial-yellow mb-2" />
-                <p className="font-mono-custom text-xs text-white/50 uppercase mb-1">Possession</p>
-                <p className="font-aggressive text-2xl text-white">{matchReportConfig.stats.possession}</p>
+              {/* Updated Stats Section */}
+              <div className="grid grid-cols-2 gap-4 mb-10">
+                <div className="bg-white/5 p-4 bevel-sm border border-white/10">
+                  <p className="text-white/40 font-mono-custom text-[10px] uppercase mb-1">League Standing</p>
+                  <p className="text-2xl font-aggressive text-imperial-yellow">{matchReportConfig.standing}</p>
+                </div>
+                <div className="bg-white/5 p-4 bevel-sm border border-white/10">
+                  <p className="text-white/40 font-mono-custom text-[10px] uppercase mb-1">Player Spotlight</p>
+                  <p className="text-sm font-aggressive text-white uppercase">{matchReportConfig.spotlightPlayer}</p>
+                  <p className="text-[10px] text-imperial-yellow/70 font-mono-custom">{matchReportConfig.spotlightStat}</p>
+                </div>
               </div>
-              <div className="bg-black/50 border border-imperial-yellow/20 p-4 bevel-sm">
-                <Target className="w-5 h-5 text-imperial-yellow mb-2" />
-                <p className="font-mono-custom text-xs text-white/50 uppercase mb-1">Shots</p>
-                <p className="font-aggressive text-2xl text-white">{matchReportConfig.stats.shots}</p>
-              </div>
-              <div className="bg-black/50 border border-imperial-yellow/20 p-4 bevel-sm">
-                <Zap className="w-5 h-5 text-imperial-yellow mb-2" />
-                <p className="font-mono-custom text-xs text-white/50 uppercase mb-1">Passes</p>
-                <p className="font-aggressive text-2xl text-white">{matchReportConfig.stats.passes}</p>
+
+              <div className="flex flex-wrap gap-4">
+                <button 
+                  onClick={() => document.getElementById('fixtures')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="btn-imperial text-xs flex items-center gap-2"
+                >
+                  UPCOMING FIXTURES <ChevronRight className="w-4 h-4" />
+                </button>
+                <a href={matchReportConfig.allMatchesLink} className="btn-imperial-outline text-xs flex items-center gap-2">
+                  PREVIOUS MATCHES <History className="w-4 h-4" />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Decorative corner */}
-      <div className="absolute top-20 right-8 w-32 h-32 border-r-2 border-t-2 border-imperial-yellow/10" />
     </section>
   );
 };
