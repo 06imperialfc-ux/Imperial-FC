@@ -112,7 +112,7 @@ const MediaGallery = () => {
         ref={galleryRef}
         className="max-w-7xl mx-auto columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4"
       >
-        {mediaGalleryConfig.images.map((image, index) => (
+        {mediaGalleryConfig.images.map((image: any, index: number) => (
           <div
             key={image.id}
             className="break-inside-avoid group relative overflow-hidden cursor-pointer bevel-sm"
