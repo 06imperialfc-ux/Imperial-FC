@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Trophy, Star, ChevronRight, History } from 'lucide-react';
+import { Trophy, ChevronRight, History } from 'lucide-react';
 import { matchReportConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
