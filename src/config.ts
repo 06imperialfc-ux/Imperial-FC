@@ -33,15 +33,15 @@ export const matchReportConfig = {
   summary: 'A masterclass in clinical finishing saw the Vanguard take all three points in a heated derby.',
   
   // NEW FIELDS
-  standing: '3rd', // Update this to 1st, 3rd, 4th, etc.
+  standing: '3rd', 
   spotlightPlayer: 'S. GUMEDE',
   spotlightStat: '2 GOALS, 1 ASSIST',
-  allMatchesLink: '#', // Placeholder for future matches page
+  allMatchesLink: '#', 
 };
 
 export const squadConfig = {
   title: 'THE VANGUARD',
-  viewFullSquadLink: '#', // Placeholder for the full squad page
+  viewFullSquadLink: '#', 
   players: [
     {
       id: 1,
@@ -63,9 +63,13 @@ export const squadConfig = {
 };
 
 export const fixturesConfig = {
+  sectionLabel: 'SCHEDULE',
+  sectionTitle: 'FIXTURES & RESULTS',
+  resultsTitle: 'PAST RESULTS',
+  fixturesTitle: 'UPCOMING FIXTURES',
   fixtures: [
-    { id: 1, opponent: 'United FC', date: 'MAR 05', time: '15:00', venue: 'Imperial Arena', status: 'upcoming' },
-    { id: 2, opponent: 'Strikers SC', date: 'FEB 28', time: '14:30', venue: 'West Park', status: 'win', score: '2-0' }
+    { id: 1, opponent: 'United FC', date: 'MAR 05', time: '15:00', venue: 'Imperial Arena', status: 'upcoming', type: 'home' },
+    { id: 2, opponent: 'Strikers SC', date: 'FEB 28', time: '14:30', venue: 'West Park', status: 'win', score: '2-0', type: 'away' }
   ]
 };
 
@@ -82,4 +86,40 @@ export const footerConfig = {
     phone: '+27 00 000 0000',
     location: 'Johannesburg, South Africa'
   }
+};
+
+export const albumCubeConfig = {
+  albums: [],
+  cubeTextures: [],
+  scrollHint: 'SCROLL TO EXPLORE'
+};
+
+export const mediaGalleryConfig = {
+  sectionLabel: 'GALLERY',
+  sectionTitle: 'MEDIA',
+  images: []
+};
+
+export const parallaxGalleryConfig = {
+  sectionLabel: 'GALLERY',
+  sectionTitle: 'MOMENTS',
+  galleryLabel: 'ARCHIVE',
+  galleryTitle: 'VISUALS',
+  parallaxImagesTop: [],
+  parallaxImagesBottom: [],
+  marqueeTexts: ['IMPERIAL', 'FC'],
+  galleryImages: [],
+  endCtaText: 'SEE MORE'
+};
+
+export const tourScheduleConfig = {
+  sectionLabel: 'ON TOUR',
+  sectionTitle: 'GLOBAL',
+  vinylImage: '',
+  statusLabels: { onSale: 'ON SALE', soldOut: 'SOLD OUT', comingSoon: 'COMING SOON', default: 'TBA' },
+  buyButtonText: 'BUY TICKETS',
+  detailsButtonText: 'DETAILS',
+  bottomNote: 'More dates coming soon.',
+  bottomCtaText: 'VIEW ALL',
+  tourDates: []
 };
