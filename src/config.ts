@@ -31,8 +31,6 @@ export const matchReportConfig = {
   date: 'FEBRUARY 24, 2026',
   image: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1200',
   summary: 'A masterclass in clinical finishing saw the Vanguard take all three points in a heated derby.',
-  
-  // NEW FIELDS
   standing: '3rd', 
   spotlightPlayer: 'S. GUMEDE',
   spotlightStat: '2 GOALS, 1 ASSIST',
@@ -88,19 +86,34 @@ export const footerConfig = {
   }
 };
 
-export const albumCubeConfig = {
+// --- ADDED TYPES BELOW TO FIX THE 'NEVER' ARRAY ISSUES ---
+
+export type Album = { id: number | string; title: string; subtitle: string; };
+export const albumCubeConfig: { albums: Album[]; cubeTextures: string[]; scrollHint: string } = {
   albums: [],
   cubeTextures: [],
   scrollHint: 'SCROLL TO EXPLORE'
 };
 
-export const mediaGalleryConfig = {
+export type MediaImage = { id: number | string; src: string; alt: string; title: string; };
+export const mediaGalleryConfig: { sectionLabel: string; sectionTitle: string; images: MediaImage[] } = {
   sectionLabel: 'GALLERY',
   sectionTitle: 'MEDIA',
   images: []
 };
 
-export const parallaxGalleryConfig = {
+export type ParallaxImage = { id: number | string; src: string; alt: string; title?: string; date?: string; };
+export const parallaxGalleryConfig: { 
+  sectionLabel: string; 
+  sectionTitle: string; 
+  galleryLabel: string; 
+  galleryTitle: string; 
+  parallaxImagesTop: ParallaxImage[]; 
+  parallaxImagesBottom: ParallaxImage[]; 
+  marqueeTexts: string[]; 
+  galleryImages: ParallaxImage[]; 
+  endCtaText: string; 
+} = {
   sectionLabel: 'GALLERY',
   sectionTitle: 'MOMENTS',
   galleryLabel: 'ARCHIVE',
@@ -112,7 +125,18 @@ export const parallaxGalleryConfig = {
   endCtaText: 'SEE MORE'
 };
 
-export const tourScheduleConfig = {
+export type TourDate = { id: number | string; date: string; time: string; venue: string; city: string; status: string; image: string; };
+export const tourScheduleConfig: { 
+  sectionLabel: string; 
+  sectionTitle: string; 
+  vinylImage: string; 
+  statusLabels: Record<string, string>; 
+  buyButtonText: string; 
+  detailsButtonText: string; 
+  bottomNote: string; 
+  bottomCtaText: string; 
+  tourDates: TourDate[] 
+} = {
   sectionLabel: 'ON TOUR',
   sectionTitle: 'GLOBAL',
   vinylImage: '',
