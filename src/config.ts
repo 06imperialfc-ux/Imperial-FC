@@ -1,5 +1,7 @@
 // app/src/config.ts
 
+export const SHEET_ID = '1gnkCEgW5oU8nO0z5lkj2U1h-bBq4tpnDpp8UoCFmpNg';
+
 export const siteConfig = {
   title: 'Imperial FC | Official Site',
   brandName: 'IMPERIAL FC',
