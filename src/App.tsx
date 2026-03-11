@@ -8,6 +8,7 @@ import Squad from './sections/Squad';
 import Fixtures from './sections/Fixtures';
 import MediaGallery from './sections/MediaGallery';
 import Footer from './sections/Footer';
+import Standings from './sections/Standings';
 
 function App() {
   // Initialize Lenis smooth scrolling
@@ -39,6 +40,9 @@ function App() {
 
       {/* Fixtures & Results Section - Flexbox list */}
       <Fixtures />
+
+      {/* Standings Section - League table */}
+<Standings />
 
       {/* Media Gallery Section - Masonry grid */}
       <MediaGallery />
